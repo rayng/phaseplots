@@ -7,12 +7,9 @@ import glob
 #use glob to list out files that we want in this case:
 # This is the main input to the program
 
-
-tf=0.6595
-dir='/home/ngray/ORCA/GPE/SRC/free-exp-data/nr1/*'+str(tf)+'*.dat'
-files=glob.glob(dir)
-
+def gen_interference_patterns(dir):
 #iterate through files
+files=glob.glob(dir)
 for f in files:
     # parse file name using "/" delimiter
     fsplit=f.split("/")
@@ -25,9 +22,21 @@ for f in files:
     plt.scatter(x, y, c=z, s=50, edgecolor='')
     plt.xlim(min(x), max(x))
     plt.ylim(min(y), max(y))
-    plt.ylabel(r"$z$")
-    plt.xlabel(r"$x$")    
+    plt.ylabel(r"$z$",fontsize=20)
+    plt.xlabel(r"$x$",fontsize=20)
     plt.colorbar()
     plt.savefig('./figs/'+fn+'.png')
     plt.clf()
     
+
+tf=0.6595
+dir='/home/ngray/ORCA/GPE/SRC/free-exp-data/nr1/*'+str(tf)+'*.dat'
+
+#test this
+gen_interference_patterns(dir)
+
+
+
+
+
+
